@@ -1,0 +1,113 @@
+{
+    "key": "group_633c373314c88",
+    "title": "Slider",
+    "fields": [
+        {
+            "key": "field_633c3d9cdec2b",
+            "label": "Images",
+            "name": "images",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_field_group_condition": 0,
+            "acfe_repeater_stylised_button": 0,
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_633c3de0dec2c",
+                    "label": "image",
+                    "name": "Image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "acfe_save_meta": 0,
+                    "acfe_field_group_condition": 0,
+                    "uploader": "",
+                    "acfe_thumbnail": 0,
+                    "return_format": "url",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "parent_repeater": "field_633c3d9cdec2b"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "comment",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "_pip_thumbnail": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "_pip_is_layout": 1,
+    "_pip_layout_slug": "slider",
+    "_pip_render_layout": "slider.php",
+    "_pip_render_style": "slider.css",
+    "_pip_render_script": "slider.js",
+    "field_add_config_file": 0,
+    "field_add_configuration": 1,
+    "_pip_configuration": [
+        "group_layouts_configuration"
+    ],
+    "_pip_modal_size": "medium",
+    "pip_layout_var": {
+        "row-601152580ebc5": {
+            "pip_layout_var_key": "section_intro",
+            "pip_layout_var_value": "mb-8 md:mb-16"
+        },
+        "row-601152590ebc6": {
+            "pip_layout_var_key": "section_end",
+            "pip_layout_var_value": "mt-8 md:mt-16"
+        }
+    },
+    "pip_layout_vars_lock": 0,
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1664892777,
+    "layout_categories": {
+        "image": "Image"
+    }
+}
