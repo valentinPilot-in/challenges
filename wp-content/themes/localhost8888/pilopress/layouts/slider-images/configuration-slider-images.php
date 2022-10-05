@@ -1,5 +1,5 @@
 <?php 
-wp_enqueue_script( 'tailwind', 'https://cdn.tailwindcss.com');
+
 if ( !has_action( 'wp_enqueue_scripts', 'pip_enqueue_script_splide' ) ) {
     add_action( 'wp_enqueue_scripts', 'pip_enqueue_script_splide' );
     function pip_enqueue_script_splide() {
@@ -19,6 +19,10 @@ if ( !has_action( 'wp_enqueue_scripts', 'pip_enqueue_script_splide' ) ) {
 
             //Core only to be able to style arrows without overriding
             wp_enqueue_style( 'splide', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/css/splide-core.min.css', array(), '2.4.21' );
+        }
+
+        if(!wp_script_is('tailwind')){
+            wp_enqueue_script( 'tailwind', 'https://cdn.tailwindcss.com');
         }
     }
 }

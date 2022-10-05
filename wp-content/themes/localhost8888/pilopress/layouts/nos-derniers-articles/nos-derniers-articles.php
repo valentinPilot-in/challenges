@@ -35,18 +35,51 @@ $images = get_sub_field( 'images' );
                 </div>
             <?php endif; ?>
 
-            <section class="splide">
-                <div class="splide__track">
-                        <ul class="splide__list">
-                        <?php
-                if($images) : 
-                    foreach($images as $image){
-                        echo "<li class='splide__slide'><img class='w-full' src='".$image['image']."'></li>";
-                    }
-                endif;
-                ?>
-                        </ul>
+            <section class="derniers-articles">
+            <?php
+            // the query
+            
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 6,
+                'order' => 'DESC',
+                'orderby' => 'date'
+            );
+            $the_query = new WP_Query( $args ); ?>
+
+            <?php if ( $the_query->have_posts() ) : ?>
+                <h2 class="h2">Nos derniers articles</h2>
+                <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                    <?php
+                        $fields= get_field('pip_flexible');
+                    ?>
+                   
+                    <article class="w-full py-5  pb-16 shadow-xl rounded-lg relative">
+                        
+                        <h3 class="h3 px-3"><?php the_title(); ?></h2>
+                        <div class="flex-none w-full relative h-72">
+                          <?php echo get_the_post_thumbnail(); ?>
+                        </div>
+                        <div class="flex-none my-3 px-3 w-full text-ellipsis overflow-hidden max-h-[6rem]">
+                            <?php echo $fields[0]['content'];?>
+                        </div>
+                        
+                        <a class="btn-primary mx-3 absolute bottom-5 right-2" href="<?php echo get_permalink();?>">Voir l'article</a>
+                    </article>
+                        
+                    
+                    
+                <?php endwhile; ?>
                 </div>
+
+                <?php wp_reset_postdata(); ?>
+
+            <?php else : ?>
+                <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+            <?php endif; ?>
+                
             </section>
 
            

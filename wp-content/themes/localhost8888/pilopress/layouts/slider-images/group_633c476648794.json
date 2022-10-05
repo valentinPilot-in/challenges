@@ -83,7 +83,7 @@
     "active": false,
     "description": "",
     "show_in_rest": 0,
-    "_pip_thumbnail": "",
+    "_pip_thumbnail": 116,
     "acfe_autosync": [
         "json"
     ],
@@ -114,5 +114,5 @@
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1664896228
+    "modified": 1664955976
 }
