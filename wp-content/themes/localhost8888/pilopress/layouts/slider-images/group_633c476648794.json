@@ -1,10 +1,10 @@
 {
-    "key": "group_633c373314c88",
-    "title": "Slider",
+    "key": "group_633c476648794",
+    "title": "Slider-Images",
     "fields": [
         {
-            "key": "field_633c3d9cdec2b",
-            "label": "Images",
+            "key": "field_633c48269ef40",
+            "label": "images",
             "name": "images",
             "type": "repeater",
             "instructions": "",
@@ -27,9 +27,9 @@
             "rows_per_page": 20,
             "sub_fields": [
                 {
-                    "key": "field_633c3de0dec2c",
+                    "key": "field_633c48439ef41",
                     "label": "image",
-                    "name": "Image",
+                    "name": "image",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
@@ -53,7 +53,7 @@
                     "mime_types": "",
                     "preview_size": "medium",
                     "library": "all",
-                    "parent_repeater": "field_633c3d9cdec2b"
+                    "parent_repeater": "field_633c48269ef40"
                 }
             ]
         }
@@ -61,7 +61,14 @@
     "location": [
         [
             {
-                "param": "comment",
+                "param": "post_type",
+                "operator": "==",
+                "value": "all"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
                 "operator": "==",
                 "value": "all"
             }
@@ -81,33 +88,31 @@
         "json"
     ],
     "_pip_is_layout": 1,
-    "_pip_layout_slug": "slider",
-    "_pip_render_layout": "slider.php",
-    "_pip_render_style": "slider.css",
-    "_pip_render_script": "slider.js",
-    "field_add_config_file": 0,
+    "_pip_layout_slug": "slider-images",
+    "_pip_render_layout": "slider-images.php",
+    "_pip_render_style": "slider-images.css",
+    "_pip_render_script": "slider-images.js",
+    "field_add_config_file": 1,
+    "_pip_config_file": "configuration-slider-images.php",
     "field_add_configuration": 1,
     "_pip_configuration": [
         "group_layouts_configuration"
     ],
     "_pip_modal_size": "medium",
     "pip_layout_var": {
-        "row-601152580ebc5": {
-            "pip_layout_var_key": "section_intro",
-            "pip_layout_var_value": "mb-8 md:mb-16"
+        "row-601aa114846a4": {
+            "pip_layout_var_key": "wrapper-image",
+            "pip_layout_var_value": ""
         },
-        "row-601152590ebc6": {
-            "pip_layout_var_key": "section_end",
-            "pip_layout_var_value": "mt-8 md:mt-16"
+        "row-601aa114846a5": {
+            "pip_layout_var_key": "image",
+            "pip_layout_var_value": "w-full object-cover object-center"
         }
     },
-    "pip_layout_vars_lock": 0,
+    "pip_layout_vars_lock": 1,
     "acfe_form": 0,
     "acfe_display_title": "",
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1664892777,
-    "layout_categories": {
-        "image": "Image"
-    }
+    "modified": 1664896228
 }
