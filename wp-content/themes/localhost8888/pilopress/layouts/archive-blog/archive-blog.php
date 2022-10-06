@@ -35,32 +35,56 @@ $images = get_sub_field( 'images' );
                 </div>
             <?php endif; ?>
 
-            <section class="derniers-articles">
+            <section class="archive-articles">
             <?php
             // the query
             
             $args = array(
                 'post_type' => 'post',
-                'posts_per_page' => 6,
+                'posts_per_page' => -1,
                 'order' => 'DESC',
                 'orderby' => 'date'
             );
             $the_query = new WP_Query( $args ); ?>
 
             <?php if ( $the_query->have_posts() ) : ?>
-                <h2 class="h2">Nos derniers articles</h2>
-                <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <?php $categories =get_categories(
+                    array(
+                    'orderby' => 'count',
+                    'order'   => 'DESC'
+                    )
+                );?>
+                <form action="<?php echo admin_url( 'admin-ajax.php' ); ?>" method="POST" class="form-post-categories">
+                    <select name="categorie_slug">>
+                        <option value="all">Tout</option>
+                        <?php foreach($categories as $categorie){
+                            if($categorie->slug != "uncategorized"){
+                                echo "<option value='".$categorie->slug."'>".$categorie->name."</option>";
+                            }
+                        }?>
+                    </select>
+                    <input type="hidden" name="postid" value="<?php echo get_the_ID(); ?>">
+                    <input type="hidden" name="nonce" value="<?php echo wp_create_nonce( 'select_category_post' ); ?>"> 
+                    <input type="hidden" name="action" value="select_category_post">
+                    <!-- <input class="btn-primary bg-primary" type=submit value="envoyer"> -->
+                </form>
+                <!-- <form id="target" action="destination.html">
+                    <input type="text" value="Hello there">
+                    <input type="submit" value="Go">
+                </form> -->
+                
 
-                <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                    <?php
-                        $fields= get_field('pip_flexible');
-                    ?>
-                   
+                <h2 class="h2">Archive Blog</h2>
+                <div class="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-4 list-articles">
+
+                <?php while ( $the_query->have_posts() ) : $the_query->the_post();
+                    $fields= get_field('pip_flexible'); ?>
+                        
                     <article class="w-full py-5  pb-16 shadow-xl rounded-lg relative">
                         
                         <h3 class="h3 px-3"><?php the_title(); ?></h2>
                         <div class="flex-none w-full relative h-72">
-                          <?php echo get_the_post_thumbnail(); ?>
+                            <?php echo get_the_post_thumbnail(); ?>
                         </div>
                         <?php if(isset($fields[0]['content'])): ?>
                         <div class="flex-none my-3 px-3 w-full text-ellipsis overflow-hidden max-h-[6rem]">
@@ -70,12 +94,9 @@ $images = get_sub_field( 'images' );
                         
                         <a class="btn-primary mx-3 absolute bottom-5 right-2" href="<?php echo get_permalink();?>">Voir l'article</a>
                     </article>
-                        
-                    
-                    
+                   <?php //get_template_part('card');?>
                 <?php endwhile; ?>
                 </div>
-
                 <?php wp_reset_postdata(); ?>
 
             <?php else : ?>
@@ -83,11 +104,6 @@ $images = get_sub_field( 'images' );
             <?php endif; ?>
                 
             </section>
-
-           
-                
-            
-
             <?php 
             // Outro
             if ( $section_end ) : ?>
