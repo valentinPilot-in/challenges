@@ -1,0 +1,84 @@
+{
+    "key": "group_633ee640d9997",
+    "title": "Widget météo",
+    "fields": [
+        {
+            "key": "field_633ee640e1cc4",
+            "label": "Emplacement",
+            "name": "emplacement",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "acfe_save_meta": 0,
+            "acfe_field_group_condition": 0,
+            "default_value": "Lyon",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "all"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "_pip_thumbnail": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "_pip_is_layout": 1,
+    "_pip_layout_slug": "widget-meteo",
+    "_pip_render_layout": "widget-meteo.php",
+    "_pip_render_style": "widget-meteo.css",
+    "_pip_render_script": "widget-meteo.js",
+    "field_add_config_file": 1,
+    "_pip_config_file": "configuration-widget-meteo.php",
+    "field_add_configuration": 1,
+    "_pip_configuration": [
+        "group_layouts_configuration"
+    ],
+    "_pip_modal_size": "medium",
+    "pip_layout_var": {
+        "row-601aa114846a4": {
+            "pip_layout_var_key": "wrapper-image",
+            "pip_layout_var_value": ""
+        },
+        "row-601aa114846a5": {
+            "pip_layout_var_key": "image",
+            "pip_layout_var_value": "w-full object-cover object-center"
+        }
+    },
+    "pip_layout_vars_lock": 1,
+    "acfe_form": 0,
+    "acfe_display_title": "",
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1665068321
+}

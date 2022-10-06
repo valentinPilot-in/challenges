@@ -84,10 +84,6 @@ $images = get_sub_field( 'images' );
                 
             </section>
 
-           
-                
-            
-
             <?php 
             // Outro
             if ( $section_end ) : ?>

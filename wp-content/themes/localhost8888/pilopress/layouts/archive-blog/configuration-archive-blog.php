@@ -60,7 +60,85 @@ function select_category_post(){
             endif;
             $html .='<a class="btn-primary mx-3 absolute bottom-5 right-2" href="'.get_permalink().'">Voir l\'article</a></article>';
         //get_template_part('card');
-    endwhile; ?>
-    <?php wp_send_json_success( $html );
-}
+    endwhile; 
+                // $response = wp_remote_get( 'https://www.pilot-in.com/wp-json/wp/v2/posts');
+    // try {
+    //     // Note that we decode the body's response since it's the actual JSON feed
+    //     $json = json_decode($response);
+    //     foreach ($json as $article){
+    //         $new_post = array(
+    //             'ID' => $article['id'],
+    //             'post_type' => 'articlespilot_in', // Custom Post Type Slug
+    //             'post_status' => 'publish',
+    //             'post_title' => $article['title']['rendered'],
+    //           );
+          
+    //       wp_insert_post($new_post);
+    //     }
+ 
+    // } catch ( Exception $ex ) {
+    //     $json = null;
+    // } // end try/catch
+ 
+    // var_dump($json); 
+    // $json = json_decode($response['body']);
+    // foreach ($json as $article){
+    //     if ( get_page_by_title( $article->title->rendered ) == null ) {
+    //         $new_post = array( 
+    //             'post_type' => 'articlespilot_in', // Custom Post Type Slug
+    //             'post_status' => 'publish',
+    //             'post_title' => $article->title->rendered,
+    //             );
+    //         $post_id = wp_insert_post($new_post, true);
+    //     }
 
+    //     $the_slug = $article->slug;
+    //     $args = array(
+    //         'name'        => $the_slug,
+    //         'post_type'   => 'articlespilot_in',
+    //         'post_status' => 'publish',
+    //     );
+    //     $my_posts = get_posts($args);
+    //     if( $my_posts ) {
+    //         wp_send_json_success( $my_posts);
+    //     }
+    //     else {
+    //         // wp_send_json_success( 'NON :'.$the_slug);
+    //         $new_post = array( 
+    //             'post_type' => 'articlespilot_in', // Custom Post Type Slug
+    //             'post_status' => 'publish',
+    //             'post_title' => $article->title->rendered,
+    //             'name' => $the_slug,
+    //         );
+    
+    //         $post_id = wp_insert_post($new_post, true);
+    //     }
+    //     // global $wpdb;
+    //     // $articleTitle = $article->title->rendered;
+    //     // $query = $wpdb->prepare(
+    //     //     `SELECT ID FROM  $wpdb->posts 
+    //     //     WHERE post_type = 'articlespilot_in'`
+    //     // );
+    //     //post_title = $articleTitle AND
+    //     //AND post_status = 'publish'
+    //     // $test = $wpdb->query( $query );
+        
+        
+        
+    //     // if ( $wpdb->num_rows ) {
+    //     //     $post_id = $wpdb->get_var( $query );
+    //     //     $meta = get_post_meta( $post_id, 'times', TRUE );
+    //     //     $meta++;
+    //     //     update_post_meta( $post_id, 'times', $meta );
+    //     // } else {
+    //     //     $new_post = array( 
+    //     //         'post_type' => 'articlespilot_in', // Custom Post Type Slug
+    //     //         'post_status' => 'publish',
+    //     //         'post_title' => $article->title->rendered,
+    //     //     );
+    
+    //     //     $post_id = wp_insert_post($new_post, true);
+    //     // }
+    wp_send_json_success( $html );
+    }
+   
