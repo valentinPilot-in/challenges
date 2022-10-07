@@ -184,8 +184,6 @@ if ( !class_exists( 'Project' ) ) {
         $json = json_decode($response['body']);
 
 
-
-
         foreach ($json as $article){
             $args = array(
                 'post_type' => 'articlespilot_in',
@@ -213,11 +211,6 @@ if ( !class_exists( 'Project' ) ) {
                 );
                     $post_id = wp_insert_post($new_post, true);
               }
-
-           
-
-      
-            
         }
      
         } catch ( Exception $ex ) {
