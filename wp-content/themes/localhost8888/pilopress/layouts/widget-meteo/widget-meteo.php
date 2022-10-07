@@ -36,19 +36,40 @@ $images = get_sub_field( 'images' );
             <?php endif; ?>
 
             <section class="widget-meteo">
-                <?php
-                    if(!get_transient( 'meteo')){
-                        $valueMeteo = wp_remote_get( 'https://api.openweathermap.org/data/2.5/weather?q=Lyon&appid=18b3f8c8fb78a6d386fc77c483242441&lang=fr&units=metrics');
-                        set_transient( 'meteo', $valueMeteo , '100');
-                        $meteo = get_transient( 'meteo');
-                        var_dump($meteo);
-                    }else{
-                        $meteo = get_transient( 'meteo');
-                        var_dump($meteo);
-                    }
-                ?>
+                
                 <h2 class="h2">Widget Météo</h3>
+                
+                <?php
+                    $meteo = getMeteo();
+                    $urlImg = "http://openweathermap.org/img/wn/".$meteo->weather[0]->icon."@2x.png";
+                    $temperature = round($meteo->main->temp);
+                    $tempLike = round($meteo->main->feels_like);
+                    $vent = round($meteo->wind->speed);
+                    $ville = $meteo->name;
+                    $humidity = $meteo->main->humidity;
+                ?>
+                <article class="bg-zinc-800 w-64 text-white text-center p-3 flex justify-center flex-col">
+                    <img src="<?php echo $urlImg ?>">
+                    <p class="text-4xl"><?php echo $temperature ?>°C</p>
+                    <p class="h3 text-white"><?php echo $ville; ?></p>
+                    <div class="flex justify-between py-6">
+                        <div>
+                            <p class="font-bold">Vent</p>
+                            <p><?php echo $vent; ?>km/h</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">Humidité</p>
+                            <p><?php echo $humidity; ?>%</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">Ressenti</p>
+                            <p><?php echo $tempLike ?>°C</p>
+                        </div>
+                    </div>
 
+                    
+                </article>
+               
             </section>
 
             <?php 

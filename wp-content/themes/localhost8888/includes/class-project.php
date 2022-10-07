@@ -146,11 +146,6 @@ if ( !class_exists( 'Project' ) ) {
 
 
 
-
-    /**
-     *  PIT - Cron schedule + Event
-     *  - Add custom daily schedule + schedule event
-     */
     add_action('init', '_pit_schedule_event_articles_pilotin');
     function _pit_schedule_event_articles_pilotin() {
         /**
@@ -171,7 +166,7 @@ if ( !class_exists( 'Project' ) ) {
         $event_name     = '_pit_event_articles_pilotin';
         $event_schedule = '_pit_daily';
         // $event_time     = strtotime(date('d F Y 12h44'), time());
-        $event_time     = strtotime(date('d F Y 12h37') . '+1 day', time());
+        $event_time     = strtotime(date('d F Y 10h00') . '+1 day', time());
         /**
          *  If the event is not already scheduled, schedule it. 
          */
@@ -180,7 +175,6 @@ if ( !class_exists( 'Project' ) ) {
     }
     /**
      *  PIT - Event
-     *  - Your custom event code
      */
     add_action('_pit_event_articles_pilotin', '_pit_action_daily_articles_pilotin', 10, 1);
     function _pit_action_daily_articles_pilotin() {
@@ -188,13 +182,42 @@ if ( !class_exists( 'Project' ) ) {
         try {
             // Note that we decode the body's response since it's the actual JSON feed
         $json = json_decode($response['body']);
+
+
+
+
         foreach ($json as $article){
-            $new_post = array(
-                'post_type' => 'articlespilot_in', // Custom Post Type Slug
+            $args = array(
+                'post_type' => 'articlespilot_in',
+                'posts_per_page' => 1,
+                'content'  => $article->id,
                 'post_status' => 'publish',
-                'post_title' => $article->title->rendered,
+            );
+            $args = array(
+                'post_type'    => 'articlespilot_in',
+                'name' => $article->slug,
+              );
+              
+              $query = new WP_Query($args);
+              
+              if ($query->post_count == 0) {
+                $new_post = array(
+                    'post_type' => 'articlespilot_in', // Custom Post Type Slug
+                    'post_status' => 'publish',
+                    'post_title' => $article->title->rendered,
+                    'content' => $article->id,
+                    'meta_key'  => $article->id,
+                    'post_date' => $article->date,
+                    'post_modified' => $article->modified,
+                    'name' => $article->slug,
                 );
-            $post_id = wp_insert_post($new_post, true);
+                    $post_id = wp_insert_post($new_post, true);
+              }
+
+           
+
+      
+            
         }
      
         } catch ( Exception $ex ) {

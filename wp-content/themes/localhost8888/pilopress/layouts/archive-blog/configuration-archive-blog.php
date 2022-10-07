@@ -48,8 +48,9 @@ function select_category_post(){
     }
    
     $the_query = new WP_Query( $args );
-    $html = '';
+    $html = '';  
     while ( $the_query->have_posts() ) : $the_query->the_post();
+        // $html .= get_template_part('pilopress/layouts/archive-blog/part/card');
         $fields= get_field('pip_flexible');
         $html .='<article class="w-full py-5  pb-16 shadow-xl rounded-lg relative">
             <h3 class="h3 px-3">'.get_the_title().'</h2>
@@ -59,8 +60,8 @@ function select_category_post(){
                 '.$fields[0]['content'].'</div>';
             endif;
             $html .='<a class="btn-primary mx-3 absolute bottom-5 right-2" href="'.get_permalink().'">Voir l\'article</a></article>';
-        //get_template_part('card');
     endwhile; 
+    
                 // $response = wp_remote_get( 'https://www.pilot-in.com/wp-json/wp/v2/posts');
     // try {
     //     // Note that we decode the body's response since it's the actual JSON feed
@@ -139,6 +140,7 @@ function select_category_post(){
     
     //     //     $post_id = wp_insert_post($new_post, true);
     //     // }
+
     wp_send_json_success( $html );
     }
    
