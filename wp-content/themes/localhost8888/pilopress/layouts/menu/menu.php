@@ -19,7 +19,7 @@ $content_width = pip_get_responsive_class( $container_width, $advanced_mode );
 
 
 <header <?php echo acf_maybe_get( $configuration, 'section_id' ); ?>
-class="<?php echo acf_maybe_get( $configuration, 'section_class' ); ?> bg-zinc-800 text-white "
+class="<?php echo acf_maybe_get( $configuration, 'section_class' ); ?> bg-zinc-800 text-white z-40"
     style="<?php echo apply_filters( 'pip/layout/section_style', '', $configuration ); ?>"
     <?php echo apply_filters( 'pip/layout/section_attributes', '', $configuration ); ?>>
     <?php do_action( 'pip/layout/section_start', $configuration ); ?>
